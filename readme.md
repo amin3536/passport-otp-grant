@@ -123,7 +123,7 @@ license. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/amin3536/passport-otp-grant.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/amin3536/passport-otp-grant.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/amin3536/passport-otp-grant/master.svg?style=flat-square
+[ico-travis]: https://travis-ci.com/amin3536/passport-otp-grant.svg?branch=main?style=flat-square
 [ico-styleci]: https://github.styleci.io/repos/339999725/shield
 
 [link-packagist]: https://packagist.org/packages/amin3536/passport-otp-grant
