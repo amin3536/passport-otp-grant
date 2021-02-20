@@ -99,10 +99,10 @@ Please see the [changelog](changelog.md) for more information on what has change
 ``` bash
 $ composer test
 ```
-##TO do list 
+## to do list 
 - [ ] change phone_number to user 
 - [ ] add test 
-- [ ] add CI 
+- [x] add CI 
     
 ## Contributing
 
@@ -123,12 +123,12 @@ license. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/amin3536/passport-otp-grant.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/amin3536/passport-otp-grant.svg?style=flat-square
-[ico-travis]: https://travis-ci.com/amin3536/passport-otp-grant.svg?branch=main?style=flat-square
+[ico-travis]: https://travis-ci.com/amin3536/passport-otp-grant.svg?branch=main
 [ico-styleci]: https://github.styleci.io/repos/339999725/shield
 
 [link-packagist]: https://packagist.org/packages/amin3536/passport-otp-grant
 [link-downloads]: https://packagist.org/packages/amin3536/passport-otp-grant
-[link-travis]: https://travis-ci.org/amin3536/passport-otp-grant
+[link-travis]: https://travis-ci.com/github/amin3536/passport-otp-grant
 [link-styleci]: https://github.styleci.io/repos/339999725
 [link-author]: https://github.com/amin3536
 [link-contributors]: ../../contributors
