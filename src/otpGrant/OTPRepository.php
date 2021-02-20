@@ -6,7 +6,7 @@
  * Time: 12:19 PM.
  */
 
-namespace App\Modules\otpGrant;
+namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use Laravel\Passport\Bridge\User;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
