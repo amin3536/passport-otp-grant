@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\otpGrant;
+namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 
