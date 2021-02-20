@@ -5,8 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
-
+this package help you to implement otp grant (register - login with verify code ore two verification code ) via laravel-passport
 ## Installation
 
 Via Composer
@@ -15,7 +14,80 @@ Via Composer
 $ composer require amin3536/passport-otp-grant
 ```
 
-## Usage
+##  initial 
+1-install and initial laravel passport in your project and create a password-client 
+
+2- add below two rows to your user migration ( if you want use custom rows see customising section)
+```php
+    //...
+    $table->string('phone_number')->unique();
+    $table->integer('otp')->nullable();
+    //...
+
+
+```
+
+add `` use HasOTP;``  in your model :
+```php
+<?php
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasApiTokens, HasOTP;
+    //...
+    }
+```
+## sample usage 
+below sample and logic  is  about  login and register whit ``otp``. (it's not about two verification )
+```php
+public function userLoginOrRegister(UserLoginRequest $request)
+    {
+
+        $user = $this->userModel->wherePhoneNumber($request['phone_number'])->first();
+        if (!$user) {
+            $user = $this->userModel->create(['phone_number' => $request['phone_number']]);
+        }
+
+        $user->otp = $code_verifier = rand(10000, 99999);
+        //you cand send otp code via sms , email , any messanger , ..... 
+        this->sendOtpCodeToUser(user);
+
+
+    }
+        
+        
+        
+```
+now you can verify user with passport  like below 
+
+```php
+Request::create('/oauth/token',
+            'POST',
+            [
+                'grant_type' => 'otp_grant',
+                'client_id' => 'client_id',
+                'client_secret' => client_secret',
+                'phone_number' => 'phone_number',
+                'otp' => 'otp',
+                'scope' =>'',
+            ]);
+```
+
+
+## customising
+
+```php
+<?php
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasApiTokens, HasOTP;
+    
+    $phoneNumberColumn='anything';
+    $OTPColumn='my_otp';
+    //otp expire time in minute 
+    $OTPExpireTime=15;
+    //...
+    }
+```
 
 ## Change log
 
@@ -26,6 +98,10 @@ Please see the [changelog](changelog.md) for more information on what has change
 ``` bash
 $ composer test
 ```
+##TO do list 
+- [ ] change phone_number to user 
+- [ ] add test 
+- [ ] add CI 
 
 ## Contributing
 
