@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: amin
  * Date: 2/14/21
- * Time: 12:14 PM
+ * Time: 12:14 PM.
  */
 
 namespace App\Modules\otpGrant;
-
 
 use DateInterval;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
@@ -21,40 +20,33 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class OTPGrant extends AbstractGrant
 {
-
     /**
      * @var DateInterval
      */
     private $authCodeTTL;
 
-    var $OTPRepository;
-
+    public $OTPRepository;
 
     /**
      * {@inheritdoc}
      * @throws \Exception
      */
-
     public function __construct(
         OTPRepositoryInterFace $OTPRepository,
         RefreshTokenRepositoryInterface $refreshTokenRepository,
         DateInterval $authCodeTTL
-    )
-    {
+    ) {
         $this->OTPRepository = $OTPRepository;
         $this->setRefreshTokenRepository($refreshTokenRepository);
         $this->authCodeTTL = $authCodeTTL;
         $this->refreshTokenTTL = new DateInterval('P1M');
-
     }
-
 
     public function respondToAccessTokenRequest(
         ServerRequestInterface $request,
         ResponseTypeInterface $responseType,
         DateInterval $accessTokenTTL
-    )
-    {
+    ) {
 
         // Validate request
         $client = $this->validateClient($request);
@@ -79,7 +71,6 @@ class OTPGrant extends AbstractGrant
 
         return $responseType;
     }
-
 
     /**
      * @param ServerRequestInterface $request
@@ -110,7 +101,6 @@ class OTPGrant extends AbstractGrant
             $client
         );
 
-
         if ($user instanceof UserEntityInterface === false) {
             $this->getEmitter()->emit(new RequestEvent(RequestEvent::USER_AUTHENTICATION_FAILED, $request));
 
@@ -120,11 +110,8 @@ class OTPGrant extends AbstractGrant
         return $user;
     }
 
-
     public function getIdentifier()
     {
         return 'otp_grant';
     }
-
-
 }
