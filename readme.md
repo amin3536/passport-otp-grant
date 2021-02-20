@@ -49,6 +49,7 @@ public function userLoginOrRegister(UserLoginRequest $request)
 
         $user->otp = $code_verifier = rand(10000, 99999);
         //you cand send otp code via sms , email , any messanger , ..... 
+        $user->save();
         this->sendOtpCodeToUser(user);
 
 
