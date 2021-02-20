@@ -1,1 +1,4 @@
 preset: laravel
+
+script:
+  - vendor/bin/phpunit
