@@ -6,7 +6,7 @@
  * Time: 2:29 PM.
  */
 
-namespace App\Modules\otpGrant;
+namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use League\OAuth2\Server\Exception\OAuthServerException;
 
