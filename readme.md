@@ -102,7 +102,7 @@ $ composer test
 - [ ] change phone_number to user 
 - [ ] add test 
 - [ ] add CI 
-
+    
 ## Contributing
 
 Please see [contributing.md](contributing.md) for details and a todolist.
@@ -123,11 +123,11 @@ license. Please see the [license file](license.md) for more information.
 [ico-version]: https://img.shields.io/packagist/v/amin3536/passport-otp-grant.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/amin3536/passport-otp-grant.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/amin3536/passport-otp-grant/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+[ico-styleci]: https://github.styleci.io/repos/339999725/shield
 
 [link-packagist]: https://packagist.org/packages/amin3536/passport-otp-grant
 [link-downloads]: https://packagist.org/packages/amin3536/passport-otp-grant
 [link-travis]: https://travis-ci.org/amin3536/passport-otp-grant
-[link-styleci]: https://styleci.io/repos/12345678
+[link-styleci]: https://github.styleci.io/repos/339999725
 [link-author]: https://github.com/amin3536
 [link-contributors]: ../../contributors
