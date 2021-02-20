@@ -3,32 +3,30 @@
  * Created by PhpStorm.
  * User: amin
  * Date: 2/14/21
- * Time: 2:29 PM
+ * Time: 2:29 PM.
  */
 
 namespace App\Modules\otpGrant;
-
 
 use League\OAuth2\Server\Exception\OAuthServerException;
 
 trait HasOTP
 {
-
-    var $phoneNumberColumn = 'phone_number';
+    public $phoneNumberColumn = 'phone_number';
 
     protected function getPhoneNumberColumn()
     {
         return $this->phoneNumberColumn;
     }
 
-    var $OTPColumn = 'otp';
+    public $OTPColumn = 'otp';
 
     protected function getOTPColumn()
     {
         return $this->OTPColumn;
     }
 
-    var $OTPExpireTime = 15;
+    public $OTPExpireTime = 15;
 
     protected function getOTPExpireTime()
     {
@@ -39,17 +37,16 @@ trait HasOTP
      * @param $phoneNumber
      * @param $otp
      * @return mixed
-     *
      */
     public function validateForOTPCodeGrant($phoneNumber, $otp)
     {
         $user = $this->where($this->getPhoneNumberColumn(), $phoneNumber)->first();
 
-        if (!$user) {
+        if (! $user) {
             throw OAuthServerException::invalidRequest('phone_number', 'phone_number');
         }
 
-        if (!$user->otp || $user->otp != $otp) {
+        if (! $user->otp || $user->otp != $otp) {
             throw OAuthServerException::invalidRequest('otp', 'otp is wrong ');
         }
 
@@ -57,10 +54,9 @@ trait HasOTP
             throw  OAuthServerException::invalidRequest('otp', 'otp code expired try  get it  again');
         }
         $this->removeOtp($user);
+
         return $user;
-
     }
-
 
     public function removeOtp($user)
     {

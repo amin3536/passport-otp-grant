@@ -17,10 +17,9 @@ class PassportOtpGrant extends ServiceProvider
         parent::register();
         $this->app
             ->afterResolving(AuthorizationServer::class, function (AuthorizationServer $server) {
-                $server->enableGrantType( $this->makeOTPGrant(),DateInterval::createfromdatestring('+1 day'));
+                $server->enableGrantType($this->makeOTPGrant(), DateInterval::createfromdatestring('+1 day'));
             });
     }
-
 
     /**
      * Create and configure a OTP grant instance.
