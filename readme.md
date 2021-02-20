@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 ```
 ## sample usage 
-below sample and logic  is  about  login and register whit ``otp``. (it's not about two verification )
+below sample and logic  is  about  login and register with ``otp``. (it's not about two verification )
 ```php
 public function userLoginOrRegister(UserLoginRequest $request)
     {
@@ -49,6 +49,7 @@ public function userLoginOrRegister(UserLoginRequest $request)
 
         $user->otp = $code_verifier = rand(10000, 99999);
         //you cand send otp code via sms , email , any messanger , ..... 
+        $user->save();
         this->sendOtpCodeToUser(user);
 
 
