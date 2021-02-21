@@ -6,7 +6,7 @@
  * Time: 12:14 PM.
  */
 
-namespace App\Modules\otpGrant;
+namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use DateInterval;
 use League\OAuth2\Server\Entities\ClientEntityInterface;

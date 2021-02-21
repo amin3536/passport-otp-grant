@@ -35,7 +35,6 @@
                 "Amin3536\\PassportOtpGrant\\PassportOtpGrantServiceProvider"
             ],
             "aliases": {
-                "PassportOtpGrant": "Amin3536\\PassportOtpGrant\\Facades\\PassportOtpGrant"
             }
         }
     }
