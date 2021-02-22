@@ -2,7 +2,6 @@
 
 namespace Amin3536\PassportOtpGrant;
 
-
 use Amin3536\PassportOtpGrant\otpGrant\OTPGrant;
 use Amin3536\PassportOtpGrant\otpGrant\OTPRepository;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -29,7 +28,6 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
 //            $this->bootForConsole();
 //        }
         Passport::routes();
-
     }
 
     /**
@@ -39,7 +37,6 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         parent::register();
         $this->app
             ->afterResolving(AuthorizationServer::class, function (AuthorizationServer $server) {
