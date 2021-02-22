@@ -5,8 +5,8 @@ namespace Amin3536\PassportOtpGrant;
 use Amin3536\PassportOtpGrant\otpGrant\OTPGrant;
 use Amin3536\PassportOtpGrant\otpGrant\OTPRepository;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Laravel\Passport\Bridge\RefreshTokenRepository;
 use Laravel\Passport\Passport;
-use Laravel\Passport\RefreshTokenRepository;
 use League\OAuth2\Server\AuthorizationServer;
 
 class PassportOtpGrantServiceProvider extends ServiceProvider
