@@ -40,7 +40,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
         parent::register();
         $this->app
             ->afterResolving(AuthorizationServer::class, function (AuthorizationServer $server) {
-                $server->enableGrantType($this->makeOTPGrant(), \DateInterval::createfromdatestring('+1 day'));
+                $server->enableGrantType($this->makeOTPGrant(), Passport::tokensExpireIn());
             });
 //        $this->mergeConfigFrom(__DIR__.'/../config/passport-otp-grant.php', 'passport-otp-grant');
 //
