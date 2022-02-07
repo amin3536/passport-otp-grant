@@ -29,6 +29,7 @@ class OTPGrant extends AbstractGrant
 
     /**
      * {@inheritdoc}
+     *
      * @throws \Exception
      */
     public function __construct(
@@ -73,12 +74,11 @@ class OTPGrant extends AbstractGrant
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ClientEntityInterface $client
+     * @param  ServerRequestInterface  $request
+     * @param  ClientEntityInterface  $client
+     * @return UserEntityInterface
      *
      * @throws OAuthServerException
-     *
-     * @return UserEntityInterface
      */
     protected function validateUser(ServerRequestInterface $request, ClientEntityInterface $client)
     {
