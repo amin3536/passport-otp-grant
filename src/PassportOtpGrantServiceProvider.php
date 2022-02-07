@@ -95,6 +95,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
      * Create and configure a OTP grant instance.
      *
      * @return OTPGrant
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Exception
      */
