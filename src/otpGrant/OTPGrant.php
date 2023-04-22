@@ -48,7 +48,6 @@ class OTPGrant extends AbstractGrant
         ResponseTypeInterface $responseType,
         DateInterval $accessTokenTTL
     ) {
-
         // Validate request
         $client = $this->validateClient($request);
         $scopes = $this->validateScopes($this->getRequestParameter('scope', $request, $this->defaultScope));
