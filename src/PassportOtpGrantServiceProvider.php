@@ -27,7 +27,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
 //        if ($this->app->runningInConsole()) {
 //            $this->bootForConsole();
 //        }
-        Passport::routes();
+//        Passport::routes();
     }
 
     /**
