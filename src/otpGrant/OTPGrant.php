@@ -9,6 +9,7 @@
 namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use DateInterval;
+use Exception;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Exception\OAuthServerException;
@@ -17,25 +18,26 @@ use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
 use League\OAuth2\Server\RequestEvent;
 use League\OAuth2\Server\ResponseTypes\ResponseTypeInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function is_null;
 
 class OTPGrant extends AbstractGrant
 {
+    public $OTPRepository;
     /**
      * @var DateInterval
      */
     private $authCodeTTL;
 
-    public $OTPRepository;
-
     /**
      * {@inheritdoc}
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(
         OTPRepositoryInterFace $OTPRepository,
         RefreshTokenRepositoryInterface $refreshTokenRepository,
         DateInterval $authCodeTTL
-    ) {
+    )
+    {
         $this->OTPRepository = $OTPRepository;
         $this->setRefreshTokenRepository($refreshTokenRepository);
         $this->authCodeTTL = $authCodeTTL;
@@ -46,7 +48,8 @@ class OTPGrant extends AbstractGrant
         ServerRequestInterface $request,
         ResponseTypeInterface $responseType,
         DateInterval $accessTokenTTL
-    ) {
+    )
+    {
 
         // Validate request
         $client = $this->validateClient($request);
@@ -76,21 +79,21 @@ class OTPGrant extends AbstractGrant
      * @param ServerRequestInterface $request
      * @param ClientEntityInterface $client
      *
+     * @return UserEntityInterface
      * @throws OAuthServerException
      *
-     * @return UserEntityInterface
      */
     protected function validateUser(ServerRequestInterface $request, ClientEntityInterface $client)
     {
         $phoneNumber = $this->getRequestParameter('phone_number', $request);
 
-        if (\is_null($phoneNumber)) {
+        if (is_null($phoneNumber)) {
             throw OAuthServerException::invalidRequest('phone_number');
         }
 
         $otp = $this->getRequestParameter('otp', $request);
 
-        if (\is_null($otp)) {
+        if (is_null($otp)) {
             throw OAuthServerException::invalidRequest('otp');
         }
 
