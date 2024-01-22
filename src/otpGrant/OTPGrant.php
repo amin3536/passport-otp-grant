@@ -9,7 +9,6 @@
 namespace Amin3536\PassportOtpGrant\otpGrant;
 
 use DateInterval;
-use Exception;
 use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Exception\OAuthServerException;
@@ -30,7 +29,8 @@ class OTPGrant extends AbstractGrant
 
     /**
      * {@inheritdoc}
-     * @throws Exception
+     *
+     * @throws \Exception
      */
     public function __construct(
         OTPRepositoryInterFace $OTPRepository,
@@ -76,12 +76,11 @@ class OTPGrant extends AbstractGrant
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param ClientEntityInterface $client
-     *
+     * @param  ServerRequestInterface  $request
+     * @param  ClientEntityInterface  $client
      * @return UserEntityInterface
-     * @throws OAuthServerException
      *
+     * @throws OAuthServerException
      */
     protected function validateUser(ServerRequestInterface $request, ClientEntityInterface $client)
     {

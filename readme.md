@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-this package help you to implement otp grant (register - login with verify code ore two verification code ) via laravel-passport
+this package help you to implement otp grant (register - login with verify code or two verification code ) via laravel-passport
 ## Installation
 
 Via Composer

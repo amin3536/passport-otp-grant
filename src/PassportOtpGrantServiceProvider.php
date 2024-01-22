@@ -113,4 +113,5 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
         // Registering package commands.
         // $this->commands([]);
     }
+
 }
