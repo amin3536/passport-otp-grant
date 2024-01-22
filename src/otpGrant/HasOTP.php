@@ -17,19 +17,19 @@ trait HasOTP
     public $OTPExpireTime = 15;
 
     /**
-     * @param $phoneNumber
-     * @param $otp
+     * @param  $phoneNumber
+     * @param  $otp
      * @return mixed
      */
     public function validateForOTPCodeGrant($phoneNumber, $otp)
     {
         $user = $this->where($this->getPhoneNumberColumn(), $phoneNumber)->first();
 
-        if (!$user) {
+        if (! $user) {
             throw OAuthServerException::invalidRequest('phone_number', 'phone_number');
         }
 
-        if (!$user->otp || $user->otp != $otp) {
+        if (! $user->otp || $user->otp != $otp) {
             throw OAuthServerException::invalidRequest('otp', 'otp is wrong ');
         }
 
