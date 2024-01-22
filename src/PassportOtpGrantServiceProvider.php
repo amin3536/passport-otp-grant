@@ -57,6 +57,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
      * Create and configure a OTP grant instance.
      *
      * @return OTPGrant
+     *
      * @throws BindingResolutionException
      * @throws Exception
      */
@@ -113,5 +114,4 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
         // Registering package commands.
         // $this->commands([]);
     }
-
 }

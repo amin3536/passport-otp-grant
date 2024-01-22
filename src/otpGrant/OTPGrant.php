@@ -17,6 +17,7 @@ use League\OAuth2\Server\Repositories\RefreshTokenRepositoryInterface;
 use League\OAuth2\Server\RequestEvent;
 use League\OAuth2\Server\ResponseTypes\ResponseTypeInterface;
 use Psr\Http\Message\ServerRequestInterface;
+
 use function is_null;
 
 class OTPGrant extends AbstractGrant
@@ -36,8 +37,7 @@ class OTPGrant extends AbstractGrant
         OTPRepositoryInterFace $OTPRepository,
         RefreshTokenRepositoryInterface $refreshTokenRepository,
         DateInterval $authCodeTTL
-    )
-    {
+    ) {
         $this->OTPRepository = $OTPRepository;
         $this->setRefreshTokenRepository($refreshTokenRepository);
         $this->authCodeTTL = $authCodeTTL;
@@ -48,9 +48,7 @@ class OTPGrant extends AbstractGrant
         ServerRequestInterface $request,
         ResponseTypeInterface $responseType,
         DateInterval $accessTokenTTL
-    )
-    {
-
+    ) {
         // Validate request
         $client = $this->validateClient($request);
         $scopes = $this->validateScopes($this->getRequestParameter('scope', $request, $this->defaultScope));
