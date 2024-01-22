@@ -18,14 +18,15 @@ use League\OAuth2\Server\RequestEvent;
 use League\OAuth2\Server\ResponseTypes\ResponseTypeInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function is_null;
+
 class OTPGrant extends AbstractGrant
 {
+    public $OTPRepository;
     /**
      * @var DateInterval
      */
     private $authCodeTTL;
-
-    public $OTPRepository;
 
     /**
      * {@inheritdoc}
@@ -83,13 +84,13 @@ class OTPGrant extends AbstractGrant
     {
         $phoneNumber = $this->getRequestParameter('phone_number', $request);
 
-        if (\is_null($phoneNumber)) {
+        if (is_null($phoneNumber)) {
             throw OAuthServerException::invalidRequest('phone_number');
         }
 
         $otp = $this->getRequestParameter('otp', $request);
 
-        if (\is_null($otp)) {
+        if (is_null($otp)) {
             throw OAuthServerException::invalidRequest('otp');
         }
 
