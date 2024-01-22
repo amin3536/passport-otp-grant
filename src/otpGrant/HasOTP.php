@@ -13,29 +13,12 @@ use League\OAuth2\Server\Exception\OAuthServerException;
 trait HasOTP
 {
     public $phoneNumberColumn = 'phone_number';
-
-    protected function getPhoneNumberColumn()
-    {
-        return $this->phoneNumberColumn;
-    }
-
     public $OTPColumn = 'otp';
-
-    protected function getOTPColumn()
-    {
-        return $this->OTPColumn;
-    }
-
     public $OTPExpireTime = 15;
 
-    protected function getOTPExpireTime()
-    {
-        return $this->OTPExpireTime;
-    }
-
     /**
-     * @param $phoneNumber
-     * @param $otp
+     * @param  $phoneNumber
+     * @param  $otp
      * @return mixed
      */
     public function validateForOTPCodeGrant($phoneNumber, $otp)
@@ -58,8 +41,23 @@ trait HasOTP
         return $user;
     }
 
+    protected function getPhoneNumberColumn()
+    {
+        return $this->phoneNumberColumn;
+    }
+
+    protected function getOTPExpireTime()
+    {
+        return $this->OTPExpireTime;
+    }
+
     public function removeOtp($user)
     {
         $user->save([$this->getOTPColumn() => null]);
+    }
+
+    protected function getOTPColumn()
+    {
+        return $this->OTPColumn;
     }
 }

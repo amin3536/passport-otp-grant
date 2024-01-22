@@ -4,6 +4,9 @@ namespace Amin3536\PassportOtpGrant;
 
 use Amin3536\PassportOtpGrant\otpGrant\OTPGrant;
 use Amin3536\PassportOtpGrant\otpGrant\OTPRepository;
+use DateInterval;
+use Exception;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Bridge\RefreshTokenRepository;
 use Laravel\Passport\Passport;
@@ -27,7 +30,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
 //        if ($this->app->runningInConsole()) {
 //            $this->bootForConsole();
 //        }
-        Passport::routes();
+//        Passport::routes();
     }
 
     /**
@@ -40,7 +43,7 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
         parent::register();
         $this->app
             ->afterResolving(AuthorizationServer::class, function (AuthorizationServer $server) {
-                $server->enableGrantType($this->makeOTPGrant(), Passport::tokensExpireIn());
+                $server->enableGrantType($this->makeOTPGrant(), DateInterval::createfromdatestring('+1 day'));
             });
 //        $this->mergeConfigFrom(__DIR__.'/../config/passport-otp-grant.php', 'passport-otp-grant');
 //
@@ -48,6 +51,27 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
 //        $this->app->singleton('passport-otp-grant', function ($app) {
 //            return new PassportOtpGrant;
 //        });
+    }
+
+    /**
+     * Create and configure a OTP grant instance.
+     *
+     * @return OTPGrant
+     *
+     * @throws BindingResolutionException
+     * @throws Exception
+     */
+    protected function makeOTPGrant()
+    {
+        $grant = new OTPGrant(
+            $this->app->make(OTPRepository::class),
+            $this->app->make(RefreshTokenRepository::class),
+            new DateInterval('PT10M')
+        );
+
+        $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
+
+        return $grant;
     }
 
     /**
@@ -89,26 +113,5 @@ class PassportOtpGrantServiceProvider extends ServiceProvider
 
         // Registering package commands.
         // $this->commands([]);
-    }
-
-    /**
-     * Create and configure a OTP grant instance.
-     *
-     * @return OTPGrant
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     * @throws \Exception
-     */
-    protected function makeOTPGrant()
-    {
-        $grant = new OTPGrant(
-            $this->app->make(OTPRepository::class),
-            $this->app->make(RefreshTokenRepository::class),
-            new \DateInterval('PT10M')
-        );
-
-        $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
-
-        return $grant;
     }
 }
