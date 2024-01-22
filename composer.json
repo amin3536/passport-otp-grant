@@ -1,6 +1,6 @@
 {
     "name": "amin3536/passport-otp-grant",
-    "description": "passport otp grant for register and login whit verify code",
+    "description": "passport otp grant for register and login with verify code",
     "license": "MIT",
     "authors": [
         {
